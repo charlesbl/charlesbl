@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charles Blancheton - Full-Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: var(--white);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: var(--white);
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header-content h2 {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: right;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        
+        .contact-item:hover {
+            color: var(--white);
+        }
+
+        /* Main Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            padding: 40px;
+            gap: 40px;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 32px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 24px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .company {
+            color: var(--primary);
+        }
+
+        .date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .job-details ul {
+            list-style-type: none;
+        }
+
+        .job-details li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .job-details li::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .tag-category {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            margin-top: 16px;
+            display: block;
+            width: 100%;
+        }
+
+        /* Projects */
+        .project-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-weight: 700;
+        }
+
+        .project-year {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 16px;
+        }
+        
+        .degree {
+            font-weight: 600;
+        }
+        
+        .school {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .contact-info {
+                text-align: center;
+                align-items: center;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                font-size: 12.5px; /* Further reduced base font size */
+                margin: 0 !important;
+                padding: 0 !important;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 210mm;
+                height: 296mm; /* Exact A4 height minus tiny buffer */
+                max-height: 296mm;
+                margin: 0 auto;
+                box-shadow: none;
+                border-radius: 0;
+                overflow: hidden !important; /* Cut off anything that overflows */
+            }
+
+            header {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+                color: white !important;
+                padding: 20px 30px; /* Reduced padding */
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                text-align: left !important;
+                gap: 0 !important;
+            }
+            
+            .header-content h1 {
+                font-size: 1.8rem; /* Smaller name */
+            }
+            
+            .header-content h2 {
+                font-size: 1rem;
+                color: #94a3b8 !important;
+                margin-bottom: 8px;
+            }
+            
+            .header-content p {
+                 font-size: 0.85rem;
+                 margin-top: 5px !important;
+            }
+
+            .contact-item {
+                color: #cbd5e1 !important;
+                font-size: 0.8rem;
+                justify-content: flex-end !important;
+            }
+
+            .contact-info {
+                text-align: right !important;
+                align-items: flex-end !important;
+            }
+
+            .header-left {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .profile-photo {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                border: 2px solid rgba(255,255,255,0.2);
+                object-fit: cover;
+            }
+
+            .skill-tag, .project-item {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background-color: #f1f5f9 !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+            
+            .skill-tag {
+                padding: 4px 8px;
+                font-size: 0.75rem;
+            }
+
+            /* Adjust layout for print to ensure columns sit side-by-side */
+            .main-content {
+                display: grid;
+                grid-template-columns: 65% 30%; /* Fixed ratio */
+                gap: 20px; /* Reduced gap */
+                padding: 15px 30px; /* Further reduced padding */
+            }
+            
+            section {
+                margin-bottom: 15px; /* Tighter sections */
+            }
+            
+            h3 {
+                font-size: 1rem;
+                margin-bottom: 10px;
+                padding-bottom: 4px;
+            }
+            
+            .experience-item {
+                margin-bottom: 12px;
+            }
+            
+            .job-details li {
+                margin-bottom: 2px;
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+            
+            .project-item {
+                padding: 12px;
+            }
+            
+            .project-header {
+                 margin-bottom: 4px;
+            }
+            
+            .education-item {
+                margin-bottom: 8px;
+            }
+
+            /* Prevent awkward breaks */
+            header, .experience-item, .project-item, .education-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            
+            h1, h2, h3 {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <img src="photo.png" alt="Charles Blancheton" class="profile-photo">
+                <div class="header-content">
+                    <h1>Charles Blancheton</h1>
+                    <h2>Full-Stack Developer</h2>
+                    <p style="opacity: 0.9; max-width: 500px; font-size: 0.95rem; line-height: 1.5; margin-top: 10px;">
+                        Passionate about modern web technologies and AI-driven solutions. Experiencing in building scalable web applications and innovative solutions.
+                    </p>
+                </div>
+            </div>
+            <div class="contact-info">
+                <a href="mailto:charles.blancheton@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i> charles.blancheton@gmail.com
+                </a>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i> Duras, France
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-car"></i> Driver's License
+                </div>
+                <a href="https://github.com/charlesbl" class="contact-item">
+                    <i class="fab fa-github"></i> charlesbl
+                </a>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Left Column: Experience & Projects -->
+            <div class="left-col">
+                <section>
+                    <h3><i class="fas fa-briefcase"></i> Professional Experience</h3>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <span class="job-title">Full-Stack Developer <span class="company">@ Addeus</span></span>
+                            <span class="date">Feb 2023 - Present</span>
+                        </div>
+                        <div class="job-details">
+                            <ul>
+                                <li><strong>Advanced VueJS:</strong> Mastery with performance optimization in complex projects.</li>
+                                <li><strong>Serverless Expertise:</strong> Extensive use of Firebase (Firestore, RTDB, Cloud Functions).</li>
+                                <li><strong>AI Development:</strong> Built conversational agents for web and WhatsApp with file management and embeddings.</li>
+                                <li><strong>Architecture:</strong> Applied Clean Code principles and refactored backend architecture.</li>
+                                <li><strong>Leadership:</strong> Mentored junior developers, driving code quality and best practices.</li>
+                                <li><strong>DevOps:</strong> Implemented CI/CD with GitHub Actions and Terraform deployments on GCP.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <span class="job-title">Full-Stack Developer <span class="company">@ GR-BIM</span></span>
+                            <span class="date">Oct 2019 - Jun 2020</span>
+                        </div>
+                        <div class="job-details">
+                            <ul>
+                                <li><strong>Web Development:</strong> Built incident management web application.</li>
+                                <li><strong>Enterprise:</strong> Designed and implemented ASP.NET MVC application.</li>
+                                <li><strong>3D Visualization:</strong> Developed Unity-based 3D reader for architectural models with BIM integration.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <span class="job-title">Full-Stack Developer <span class="company">@ GOS CORP</span></span>
+                            <span class="date">Apr 2017 - Jun 2019</span>
+                        </div>
+                        <div class="job-details">
+                            <ul>
+                                <li><strong>Tax Platform:</strong> Developed tax declaration platform with .edi file handling.</li>
+                                <li><strong>Business Tools:</strong> Created automated company creation platform with data scraping.</li>
+                                <li><strong>Cross-Platform:</strong> Built multiplatform 3D application (Desktop, Mobile, VR) using Unity.</li>
+                                <li><strong>Mobile:</strong> Developed cross-platform drawing app with Xamarin.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-rocket"></i> Featured Projects</h3>
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-title">MealPlanner</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <p style="margin-bottom: 10px; font-size: 0.95rem;">Intelligent meal planning application with conversational AI assistant, built with modern microservices architecture.</p>
+                        <div class="skills-grid" style="margin-bottom: 10px;">
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">Vue.js 3</span>
+                            <span class="skill-tag">Express.js</span>
+                            <span class="skill-tag">LangChain</span>
+                            <span class="skill-tag">OpenAI</span>
+                        </div>
+                        <div class="job-details">
+                            <ul>
+                                <li>AI-powered conversational assistant with streaming responses</li>
+                                <li>Microservices architecture with TypeScript monorepo</li>
+                                    <li>Secure JWT authentication and personalized data</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column: Skills, Education, Strengths -->
+            <div class="right-col">
+                <section>
+                    <h3><i class="fas fa-code"></i> Tech Stack</h3>
+                    
+                    <span class="tag-category">Languages & Frameworks</span>
+                    <div class="skills-grid">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">Java</span>
+                    </div>
+
+                    <span class="tag-category">Cloud & DevOps</span>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">Google Cloud</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                    </div>
+
+                    <span class="tag-category">Databases & Tools</span>
+                    <div class="skills-grid">
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Firestore</span>
+                        <span class="skill-tag">Unity</span>
+                        <span class="skill-tag">Bash</span>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="education-item">
+                        <div class="degree">DUT Informatique</div>
+                        <div class="school">IUT Bordeaux</div>
+                        <div class="date">2015-2017</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="degree">Bac STIDD</div>
+                        <div class="school">Option SIN</div>
+                        <div class="date">2013-2015</div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-star"></i> Core Strengths</h3>
+                    <div class="job-details">
+                        <ul>
+                            <li>Software Architecture</li>
+                            <li>Team Leadership</li>
+                            <li>Fast Learning</li>
+                            <li>Collaboration</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-heart"></i> Interests</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Technology</span>
+                        <span class="skill-tag">AI & Automation</span>
+                        <span class="skill-tag">Sci-Fi</span>
+                        <span class="skill-tag">3D Printing</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

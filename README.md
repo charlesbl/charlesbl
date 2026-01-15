@@ -113,7 +113,6 @@ Intelligent meal planning application with conversational AI assistant, built wi
 - 🤖 **AI & Automation**: Machine learning applications and intelligent systems
 - 🎬 **Sci-Fi Entertainment**: Science fiction, dystopian, and futuristic content
 - 🖨️ **3D Printing**: CAD modeling and rapid prototyping
-- 🚁 **FPV Drones**: First-person view drone flying and technology
 
 ---
 
